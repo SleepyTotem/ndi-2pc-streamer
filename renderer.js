@@ -23,12 +23,14 @@ function updateStatusIconAndText(isRunning) {
 async function toggle() {
   const result = await window.api.invoke('toggle-process');
   showAlert(result.message);
+  const isRunning = await window.api.invoke('get-status');
+  updateStatusIconAndText(isRunning);
 }
 
 setInterval(async () => {
   const isRunning = await window.api.invoke('get-status');
   updateStatusIconAndText(isRunning);
-}, 200);
+}, 3000);
 
 (async () => {
   const isRunning = await window.api.invoke('get-status');
