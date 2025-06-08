@@ -6,13 +6,12 @@ This project consists of two Python scripts used to stream data or signals betwe
 
 ## 🖥️ PC1 - Stream Sender
 
-**Script:** `main.py`
+**Program:** `Sender.exe`
 
 ### Instructions:
-1. Ensure the folder includes the required `Application.Network.ScanConverter2.x64.exe` file that is bundled alongside `main.py`.
-2. Run `main.py`.
-3. Click the **"Toggle Stream"** button in the UI.
-4. Make sure the status updates to **"Running"**.
+1. Run Sender.exe on PC1, your gaming/streaming pc.
+2. When a firewall notification pops up press allow.
+3. Ensure the status is Running then move on to PC2.
 
 Once running, the script begins broadcasting the stream.
 
@@ -20,18 +19,11 @@ Once running, the script begins broadcasting the stream.
 
 ## 🖥️ PC2 - Stream Receiver
 
-**Script:** `receiver.py`
+**Program:** `Application.Network.StudioMonitor.x64.exe`
 
 ### Instructions:
-1. Run `receiver.py`.
+1. Run `Application.Network.StudioMonitor.x64.exe`.
 2. Wait for a connection or stream source from PC1.
+3. You may need to right click and select the stream yourself, see attached image below, names will vary.
 
-The script will automatically detect and handle the incoming stream once PC1 starts sending.
-
----
-
-## 📦 Requirements
-
-Ensure both PCs have Python installed and any necessary dependencies. The `Application.Network.ScanConverter2.x64.exe` file is used for stream functionality, make sure it remains in the same directory as `main.py`.
-
-Required packages are automatically installed.
+![image](https://github.com/user-attachments/assets/2f991746-c3bf-4400-b055-7c167ac6a08c)
