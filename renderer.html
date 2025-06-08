@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>NDI Streamer</title>
+  <style>
+
+    * {
+      user-select: none;
+      pointer-events: none;
+    }
+
+    button,
+    button * {
+      pointer-events: auto;
+    }
+
+    body {
+      font-family: sans-serif;
+      background-color: #1e1e1e;
+      color: #f0f0f0;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    #titlebar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 30px;
+      background-color: #333;
+      -webkit-app-region: drag;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding-right: 5px;
+    }
+
+    .title-button {
+      -webkit-app-region: no-drag;
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 16px;
+      width: 36px;
+      height: 100%;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .title-button:hover {
+      background-color: #555;
+    }
+
+    .title-button:active {
+      animation: flash 0.2s;
+    }
+
+    .title-button.close {
+      padding-top: 4px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #ff5f5f;
+    }
+
+    .title-button.close:hover {
+      background-color: #7f1d1d;
+    }
+
+    @keyframes flash {
+      0% { background-color: rgba(255,255,255,0.2); }
+      100% { background-color: transparent; }
+    }
+
+    #status {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    button.action {
+      font-size: 1rem;
+      padding: 10px 40px;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-bottom: 2rem;
+    }
+
+    button.action:hover {
+      background-color: #2563eb;
+    }
+
+    #notification {
+      position: fixed;
+      bottom: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #323232;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 8px;
+      transition: bottom 0.4s ease-in-out;
+      z-index: 1000;
+    }
+
+    #notification.show {
+      bottom: 30px;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="titlebar">
+    <button class="title-button" onclick="api.windowControl('minimize')">_</button>
+    <button class="title-button close" onclick="api.windowControl('close')">×</button>
+  </div>
+
+  <div id="status"><span id="status-icon">⛔</span> <span id="status-text">Stopped</span></div>
+  <button class="action" onclick="toggle()">Toggle Stream</button>
+
+  <div id="notification" class="hidden"></div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
